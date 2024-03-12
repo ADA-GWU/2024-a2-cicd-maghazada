@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class UnitTests {
 
 	@Autowired
@@ -55,4 +57,14 @@ class UnitTests {
 		assert (totalCredits == testCreds);
 	}
 
+
+	@Test
+	@DisplayName("Total credits for a student with no enrolled courses should be zero")
+	void testTotalCreditsWithNoEnrolledCourses() {
+		Student s = new Student();
+		s.setCourses(new ArrayList<>()); // No enrolled courses
+
+		Integer totalCredits = s.getTotalCredits();
+		assertEquals(0, totalCredits);
+	}
 }
