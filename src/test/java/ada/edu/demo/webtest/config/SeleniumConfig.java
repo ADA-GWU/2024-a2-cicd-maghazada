@@ -12,11 +12,12 @@ public class SeleniumConfig {
 
     @Bean
     public WebDriver webDriver() {
+        // Configure Chrome to run in headless mode
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
 
-        // Set up Chrome driver
         WebDriverManager.chromedriver().setup();
-        return new ChromeDriver(options);
+//        return new ChromeDriver(options);
+        return new ChromeDriver();
     }
 }

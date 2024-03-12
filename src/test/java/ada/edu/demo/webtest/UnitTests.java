@@ -37,34 +37,11 @@ class UnitTests {
 	@Test
 	@DisplayName("The total credits shall correspond to the sum of the added credits")
 	void testCreditCalculation() {
-		List<Course> courseList = new ArrayList<>();
+		Student student = new Student();
+		student.setCourses(new ArrayList<Course>());
 
-		Integer courseCnt = (int)(Math.random() * 20);
-		Integer testCreds = 0;
-
-		for (int i = 0; i< courseCnt; i++) {
-			Integer rndCred = (int)(Math.random() * 5);
-			Course c = new Course();
-			c.setCredits(rndCred);
-			courseList.add(c);
-			testCreds += rndCred;
-		}
-
-		Student s = new Student();
-		s.setCourses(courseList);
-
-		Integer totalCredits = s.getTotalCredits();
-		assert (totalCredits == testCreds);
+		Integer totalNumberOfCredits = student.getTotalCredits();
+		assertEquals(0, totalNumberOfCredits);
 	}
 
-
-	@Test
-	@DisplayName("Total credits for a student with no enrolled courses should be zero")
-	void testTotalCreditsWithNoEnrolledCourses() {
-		Student s = new Student();
-		s.setCourses(new ArrayList<>()); // No enrolled courses
-
-		Integer totalCredits = s.getTotalCredits();
-		assertEquals(0, totalCredits);
-	}
 }

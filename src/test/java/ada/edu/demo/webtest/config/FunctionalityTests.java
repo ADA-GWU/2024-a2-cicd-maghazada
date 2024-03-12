@@ -53,21 +53,23 @@ public class FunctionalityTests {
     @DisplayName("Test saving a student")
     public void testSaveStudent() {
         // Create a sample student
-        Student studentToSave = new Student(1, "Manaf", "Aghazada", "maghazada12152@ada.edu.az", new Date(), null, null);
+        Student student = new Student(1, "Manaf", "Aghazada", "maghazada12152@ada.edu.az", new Date(), null, null);
 
         // Mock the behavior of the student repository to return the saved student
-        when(studentRepository.save(studentToSave)).thenReturn(studentToSave);
+        when(studentRepository.save(student)).thenReturn(student);
 
         // Call the saveStudent method in the service
-        Student savedStudent = studentService.saveStudent(studentToSave);
+        Student student1 = studentService.saveStudent(student);
 
         // Verify that the saved student is not null
-        assertNotNull(savedStudent);
+        assertNotNull(student1);
 
         // Verify that the saved student has the correct information
-        assertEquals(studentToSave.getStudentId(), savedStudent.getStudentId());
-        assertEquals(studentToSave.getFirstName(), savedStudent.getFirstName());
-        assertEquals(studentToSave.getLastName(), savedStudent.getLastName());
-        assertEquals(studentToSave.getEmail(), savedStudent.getEmail());
+        assertEquals(student.getStudentId(), student1.getStudentId());
+        assertEquals(student.getFirstName(), student1.getFirstName());
+        assertEquals(student.getLastName(), student1.getLastName());
+        assertEquals(student.getEmail(), student1.getEmail());
+        assertEquals(student.getCourses(), student1.getCourses());
+
     }
 }
