@@ -48,4 +48,26 @@ public class FunctionalityTests {
         System.out.printf("Found students: "+students.size());
         assertEquals(2, students.size() );
     }
+
+    @Test
+    @DisplayName("Test saving a student")
+    public void testSaveStudent() {
+        // Create a sample student
+        Student studentToSave = new Student(1, "Manaf", "Aghazada", "maghazada12152@ada.edu.az", new Date(), null, null);
+
+        // Mock the behavior of the student repository to return the saved student
+        when(studentRepository.save(studentToSave)).thenReturn(studentToSave);
+
+        // Call the saveStudent method in the service
+        Student savedStudent = studentService.saveStudent(studentToSave);
+
+        // Verify that the saved student is not null
+        assertNotNull(savedStudent);
+
+        // Verify that the saved student has the correct information
+        assertEquals(studentToSave.getStudentId(), savedStudent.getStudentId());
+        assertEquals(studentToSave.getFirstName(), savedStudent.getFirstName());
+        assertEquals(studentToSave.getLastName(), savedStudent.getLastName());
+        assertEquals(studentToSave.getEmail(), savedStudent.getEmail());
+    }
 }
