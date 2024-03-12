@@ -39,11 +39,11 @@ class WebInterfaceTests {
 		try {
 			studentIdInput.sendKeys("1");
 			Thread.sleep(2000);
-			firstNameInput.sendKeys("Nigar");
+			firstNameInput.sendKeys("Manaf");
 			Thread.sleep(2000);
-			lastNameInput.sendKeys("Salayeva");
+			lastNameInput.sendKeys("Aghazada");
 			Thread.sleep(2000);
-			emailInput.sendKeys("ns@ada.edu.az");
+			emailInput.sendKeys("manafaghazada12152@ada.edu.az");
 			Thread.sleep(2000);
 		}
 		catch (Exception ex) {
@@ -61,8 +61,8 @@ class WebInterfaceTests {
 	public void CheckUser() {
 		// Check if the student is added
 		webDriver.get("http://localhost:"+port+"/student/list");
-		List<WebElement> bodyElementFName = webDriver.findElements(By.xpath("//*[contains(text(), 'Nigar')]"));
-		List<WebElement> bodyElementLName = webDriver.findElements(By.xpath("//*[contains(text(), 'Salayeva')]"));
+		List<WebElement> bodyElementFName = webDriver.findElements(By.xpath("//*[contains(text(), 'Manaf')]"));
+		List<WebElement> bodyElementLName = webDriver.findElements(By.xpath("//*[contains(text(), 'Aghazada')]"));
 		System.out.println("Element result"+bodyElementLName);
 
 		try {
